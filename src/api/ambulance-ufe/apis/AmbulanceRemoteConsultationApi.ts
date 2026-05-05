@@ -25,6 +25,11 @@ import {
     ConsultationEntryToJSON,
 } from '../models';
 
+export interface CreateConsultationEntryRequest {
+    ambulanceId: string;
+    consultationEntry: ConsultationEntry;
+}
+
 export interface DeleteConsultationEntryRequest {
     ambulanceId: string;
     entryId: string;
@@ -63,6 +68,22 @@ export interface UpdateConsultationProtocolRequest {
  * @interface AmbulanceRemoteConsultationApiInterface
  */
 export interface AmbulanceRemoteConsultationApiInterface {
+    /**
+     * 
+     * @summary Creates new consultation entry
+     * @param {string} ambulanceId 
+     * @param {ConsultationEntry} consultationEntry 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AmbulanceRemoteConsultationApiInterface
+     */
+    createConsultationEntryRaw(requestParameters: CreateConsultationEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConsultationEntry>>;
+
+    /**
+     * Creates new consultation entry
+     */
+    createConsultationEntry(requestParameters: CreateConsultationEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConsultationEntry>;
+
     /**
      * 
      * @summary Deletes a consultation entry
@@ -167,6 +188,43 @@ export interface AmbulanceRemoteConsultationApiInterface {
  * 
  */
 export class AmbulanceRemoteConsultationApi extends runtime.BaseAPI implements AmbulanceRemoteConsultationApiInterface {
+
+    /**
+     * Creates new consultation entry
+     */
+    async createConsultationEntryRaw(requestParameters: CreateConsultationEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConsultationEntry>> {
+        if (requestParameters.ambulanceId === null || requestParameters.ambulanceId === undefined) {
+            throw new runtime.RequiredError('ambulanceId','Required parameter requestParameters.ambulanceId was null or undefined when calling createConsultationEntry.');
+        }
+
+        if (requestParameters.consultationEntry === null || requestParameters.consultationEntry === undefined) {
+            throw new runtime.RequiredError('consultationEntry','Required parameter requestParameters.consultationEntry was null or undefined when calling createConsultationEntry.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/remote-consultation/{ambulanceId}/entries`.replace(`{${"ambulanceId"}}`, encodeURIComponent(String(requestParameters.ambulanceId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ConsultationEntryToJSON(requestParameters.consultationEntry),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ConsultationEntryFromJSON(jsonValue));
+    }
+
+    /**
+     * Creates new consultation entry
+     */
+    async createConsultationEntry(requestParameters: CreateConsultationEntryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConsultationEntry> {
+        const response = await this.createConsultationEntryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Deletes a consultation entry

@@ -44,7 +44,39 @@ paths:
                   $ref: "#/components/examples/ConsultationEntriesExample"
         "404":
           description: Ambulance with such ID does not exist
-
+    post:
+      tags:
+        - ambulanceRemoteConsultation
+      summary: Creates new consultation entry
+      operationId: createConsultationEntry
+      parameters:
+        - in: path
+          name: ambulanceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConsultationEntry"
+            examples:
+              request-sample:
+                $ref: "#/components/examples/ConsultationEntryExample"
+        required: true
+      responses:
+        "200":
+          description: created consultation entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsultationEntry"
+        "400":
+          description: Missing mandatory properties
+        "404":
+          description: Ambulance with such ID does not exist
+        "409":
+          description: Entry with specified id already exists
   "/remote-consultation/{ambulanceId}/entries/{entryId}":
     get:
       tags:
