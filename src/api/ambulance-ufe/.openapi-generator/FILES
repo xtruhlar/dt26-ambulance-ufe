@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+apis/AmbulanceRemoteConsultationApi.ts
+apis/index.ts
+index.ts
+models/CommunicationProtocol.ts
+models/ConsultationEntry.ts
+models/index.ts
+runtime.ts

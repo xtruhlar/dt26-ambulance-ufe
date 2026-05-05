@@ -1,12 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
-
-interface ConsultationEntry {
-  id: string;
-  patientName: string;
-  condition: string;
-  status: 'active' | 'pending' | 'closed';
-  createdAt: Date;
-}
+import { AmbulanceRemoteConsultationApi, ConsultationEntry, Configuration } from '../../api/ambulance-ufe';
 
 @Component({
   tag: 'dt26-remote-consultation-list',
@@ -20,11 +13,27 @@ export class Dt26RemoteConsultationList {
   @Prop() ambulanceId: string;
   @State() errorMessage: string;
 
-  private consultations: ConsultationEntry[] = [
-    { id: '1', patientName: 'Ján Novák', condition: 'Hypertenzia', status: 'active', createdAt: new Date('2025-05-01') },
-    { id: '2', patientName: 'Mária Kováčová', condition: 'Diabetes typu 2', status: 'pending', createdAt: new Date('2025-05-02') },
-    { id: '3', patientName: 'Peter Horváth', condition: 'Astma', status: 'active', createdAt: new Date('2025-05-03') },
-  ];
+  consultations: ConsultationEntry[];
+
+  private async getConsultationsAsync(): Promise<ConsultationEntry[]> {
+    try {
+      const configuration = new Configuration({ basePath: this.apiBase });
+      const api = new AmbulanceRemoteConsultationApi(configuration);
+      const response = await api.getConsultationEntriesRaw({ ambulanceId: this.ambulanceId });
+      if (response.raw.status < 299) {
+        return await response.value();
+      } else {
+        this.errorMessage = `Cannot retrieve consultations: ${response.raw.statusText}`;
+      }
+    } catch (err: any) {
+      this.errorMessage = `Cannot retrieve consultations: ${err.message || "unknown"}`;
+    }
+    return [];
+  }
+
+  async componentWillLoad() {
+    this.consultations = await this.getConsultationsAsync();
+  }
 
   render() {
     return (

@@ -2,3 +2,4 @@ dist
 www
 loader
 node_modules
+.openapi.json

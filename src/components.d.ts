@@ -9,6 +9,8 @@ export namespace Components {
     interface DtHeading {
     }
     interface Dt26AmbulanceUfeApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -143,6 +145,8 @@ declare namespace LocalJSX {
     interface DtHeading {
     }
     interface Dt26AmbulanceUfeApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -173,6 +177,8 @@ declare namespace LocalJSX {
 
     interface Dt26AmbulanceUfeAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface Dt26CommunicationProtocolAttributes {
         "entryId": string;
