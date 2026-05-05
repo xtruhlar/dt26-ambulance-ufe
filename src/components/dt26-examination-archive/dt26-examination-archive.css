@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}

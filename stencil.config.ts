@@ -1,7 +1,8 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'dt26-ambulance-ufe',
+  globalScript: 'src/global/app.ts',
+  namespace: 'ambulance-ufe',
   outputTargets: [
     {
       type: 'dist',
@@ -20,4 +21,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  testing: {
+    browserHeadless: "shell",
+  },
 };

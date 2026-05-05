@@ -6,63 +6,188 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface DtHeading {
+    }
+    interface Dt26CommunicationProtocol {
+        "ambulanceId": string;
+        "apiBase": string;
+        "entryId": string;
+    }
+    interface Dt26ExaminationArchive {
+        "ambulanceId": string;
+        "apiBase": string;
+    }
+    interface Dt26PatientCard {
+        "ambulanceId": string;
+        "apiBase": string;
+        "entryId": string;
+    }
+    interface Dt26RemoteConsultationList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
 }
+export interface Dt26CommunicationProtocolCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDt26CommunicationProtocolElement;
+}
+export interface Dt26ExaminationArchiveCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDt26ExaminationArchiveElement;
+}
+export interface Dt26PatientCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDt26PatientCardElement;
+}
+export interface Dt26RemoteConsultationListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDt26RemoteConsultationListElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLDtHeadingElement extends Components.DtHeading, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLDtHeadingElement: {
+        prototype: HTMLDtHeadingElement;
+        new (): HTMLDtHeadingElement;
+    };
+    interface HTMLDt26CommunicationProtocolElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLDt26CommunicationProtocolElement extends Components.Dt26CommunicationProtocol, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDt26CommunicationProtocolElementEventMap>(type: K, listener: (this: HTMLDt26CommunicationProtocolElement, ev: Dt26CommunicationProtocolCustomEvent<HTMLDt26CommunicationProtocolElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDt26CommunicationProtocolElementEventMap>(type: K, listener: (this: HTMLDt26CommunicationProtocolElement, ev: Dt26CommunicationProtocolCustomEvent<HTMLDt26CommunicationProtocolElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDt26CommunicationProtocolElement: {
+        prototype: HTMLDt26CommunicationProtocolElement;
+        new (): HTMLDt26CommunicationProtocolElement;
+    };
+    interface HTMLDt26ExaminationArchiveElementEventMap {
+        "entry-clicked": string;
+    }
+    interface HTMLDt26ExaminationArchiveElement extends Components.Dt26ExaminationArchive, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDt26ExaminationArchiveElementEventMap>(type: K, listener: (this: HTMLDt26ExaminationArchiveElement, ev: Dt26ExaminationArchiveCustomEvent<HTMLDt26ExaminationArchiveElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDt26ExaminationArchiveElementEventMap>(type: K, listener: (this: HTMLDt26ExaminationArchiveElement, ev: Dt26ExaminationArchiveCustomEvent<HTMLDt26ExaminationArchiveElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDt26ExaminationArchiveElement: {
+        prototype: HTMLDt26ExaminationArchiveElement;
+        new (): HTMLDt26ExaminationArchiveElement;
+    };
+    interface HTMLDt26PatientCardElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLDt26PatientCardElement extends Components.Dt26PatientCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDt26PatientCardElementEventMap>(type: K, listener: (this: HTMLDt26PatientCardElement, ev: Dt26PatientCardCustomEvent<HTMLDt26PatientCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDt26PatientCardElementEventMap>(type: K, listener: (this: HTMLDt26PatientCardElement, ev: Dt26PatientCardCustomEvent<HTMLDt26PatientCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDt26PatientCardElement: {
+        prototype: HTMLDt26PatientCardElement;
+        new (): HTMLDt26PatientCardElement;
+    };
+    interface HTMLDt26RemoteConsultationListElementEventMap {
+        "entry-clicked": string;
+    }
+    interface HTMLDt26RemoteConsultationListElement extends Components.Dt26RemoteConsultationList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDt26RemoteConsultationListElementEventMap>(type: K, listener: (this: HTMLDt26RemoteConsultationListElement, ev: Dt26RemoteConsultationListCustomEvent<HTMLDt26RemoteConsultationListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDt26RemoteConsultationListElementEventMap>(type: K, listener: (this: HTMLDt26RemoteConsultationListElement, ev: Dt26RemoteConsultationListCustomEvent<HTMLDt26RemoteConsultationListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDt26RemoteConsultationListElement: {
+        prototype: HTMLDt26RemoteConsultationListElement;
+        new (): HTMLDt26RemoteConsultationListElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "dt-heading": HTMLDtHeadingElement;
+        "dt26-communication-protocol": HTMLDt26CommunicationProtocolElement;
+        "dt26-examination-archive": HTMLDt26ExaminationArchiveElement;
+        "dt26-patient-card": HTMLDt26PatientCardElement;
+        "dt26-remote-consultation-list": HTMLDt26RemoteConsultationListElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface DtHeading {
+    }
+    interface Dt26CommunicationProtocol {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
+        "entryId"?: string;
+        "onEditor-closed"?: (event: Dt26CommunicationProtocolCustomEvent<string>) => void;
+    }
+    interface Dt26ExaminationArchive {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
+        "onEntry-clicked"?: (event: Dt26ExaminationArchiveCustomEvent<string>) => void;
+    }
+    interface Dt26PatientCard {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
+        "entryId"?: string;
+        "onEditor-closed"?: (event: Dt26PatientCardCustomEvent<string>) => void;
+    }
+    interface Dt26RemoteConsultationList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
+        "onEntry-clicked"?: (event: Dt26RemoteConsultationListCustomEvent<string>) => void;
     }
 
-    interface MyComponentAttributes {
-        "first": string;
-        "middle": string;
-        "last": string;
+    interface Dt26CommunicationProtocolAttributes {
+        "entryId": string;
+        "apiBase": string;
+        "ambulanceId": string;
+    }
+    interface Dt26ExaminationArchiveAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
+    }
+    interface Dt26PatientCardAttributes {
+        "entryId": string;
+        "apiBase": string;
+        "ambulanceId": string;
+    }
+    interface Dt26RemoteConsultationListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
 
     interface IntrinsicElements {
-        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "dt-heading": DtHeading;
+        "dt26-communication-protocol": Omit<Dt26CommunicationProtocol, keyof Dt26CommunicationProtocolAttributes> & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes]?: Dt26CommunicationProtocol[K] } & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes as `attr:${K}`]?: Dt26CommunicationProtocolAttributes[K] } & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes as `prop:${K}`]?: Dt26CommunicationProtocol[K] };
+        "dt26-examination-archive": Omit<Dt26ExaminationArchive, keyof Dt26ExaminationArchiveAttributes> & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes]?: Dt26ExaminationArchive[K] } & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes as `attr:${K}`]?: Dt26ExaminationArchiveAttributes[K] } & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes as `prop:${K}`]?: Dt26ExaminationArchive[K] };
+        "dt26-patient-card": Omit<Dt26PatientCard, keyof Dt26PatientCardAttributes> & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes]?: Dt26PatientCard[K] } & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes as `attr:${K}`]?: Dt26PatientCardAttributes[K] } & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes as `prop:${K}`]?: Dt26PatientCard[K] };
+        "dt26-remote-consultation-list": Omit<Dt26RemoteConsultationList, keyof Dt26RemoteConsultationListAttributes> & { [K in keyof Dt26RemoteConsultationList & keyof Dt26RemoteConsultationListAttributes]?: Dt26RemoteConsultationList[K] } & { [K in keyof Dt26RemoteConsultationList & keyof Dt26RemoteConsultationListAttributes as `attr:${K}`]?: Dt26RemoteConsultationListAttributes[K] } & { [K in keyof Dt26RemoteConsultationList & keyof Dt26RemoteConsultationListAttributes as `prop:${K}`]?: Dt26RemoteConsultationList[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "dt-heading": LocalJSX.IntrinsicElements["dt-heading"] & JSXBase.HTMLAttributes<HTMLDtHeadingElement>;
+            "dt26-communication-protocol": LocalJSX.IntrinsicElements["dt26-communication-protocol"] & JSXBase.HTMLAttributes<HTMLDt26CommunicationProtocolElement>;
+            "dt26-examination-archive": LocalJSX.IntrinsicElements["dt26-examination-archive"] & JSXBase.HTMLAttributes<HTMLDt26ExaminationArchiveElement>;
+            "dt26-patient-card": LocalJSX.IntrinsicElements["dt26-patient-card"] & JSXBase.HTMLAttributes<HTMLDt26PatientCardElement>;
+            "dt26-remote-consultation-list": LocalJSX.IntrinsicElements["dt26-remote-consultation-list"] & JSXBase.HTMLAttributes<HTMLDt26RemoteConsultationListElement>;
         }
     }
 }

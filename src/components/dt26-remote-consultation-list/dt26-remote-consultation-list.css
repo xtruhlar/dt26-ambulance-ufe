@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+.error {
+  color: red;
+  padding: 1rem;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
