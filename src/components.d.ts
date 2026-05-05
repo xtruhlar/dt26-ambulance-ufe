@@ -8,6 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DtHeading {
     }
+    interface Dt26AmbulanceUfeApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
     interface Dt26CommunicationProtocol {
         "ambulanceId": string;
         "apiBase": string;
@@ -49,6 +55,12 @@ declare global {
     var HTMLDtHeadingElement: {
         prototype: HTMLDtHeadingElement;
         new (): HTMLDtHeadingElement;
+    };
+    interface HTMLDt26AmbulanceUfeAppElement extends Components.Dt26AmbulanceUfeApp, HTMLStencilElement {
+    }
+    var HTMLDt26AmbulanceUfeAppElement: {
+        prototype: HTMLDt26AmbulanceUfeAppElement;
+        new (): HTMLDt26AmbulanceUfeAppElement;
     };
     interface HTMLDt26CommunicationProtocolElementEventMap {
         "editor-closed": string;
@@ -120,6 +132,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "dt-heading": HTMLDtHeadingElement;
+        "dt26-ambulance-ufe-app": HTMLDt26AmbulanceUfeAppElement;
         "dt26-communication-protocol": HTMLDt26CommunicationProtocolElement;
         "dt26-examination-archive": HTMLDt26ExaminationArchiveElement;
         "dt26-patient-card": HTMLDt26PatientCardElement;
@@ -128,6 +141,12 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DtHeading {
+    }
+    interface Dt26AmbulanceUfeApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
     }
     interface Dt26CommunicationProtocol {
         "ambulanceId"?: string;
@@ -152,6 +171,9 @@ declare namespace LocalJSX {
         "onEntry-clicked"?: (event: Dt26RemoteConsultationListCustomEvent<string>) => void;
     }
 
+    interface Dt26AmbulanceUfeAppAttributes {
+        "basePath": string;
+    }
     interface Dt26CommunicationProtocolAttributes {
         "entryId": string;
         "apiBase": string;
@@ -173,6 +195,7 @@ declare namespace LocalJSX {
 
     interface IntrinsicElements {
         "dt-heading": DtHeading;
+        "dt26-ambulance-ufe-app": Omit<Dt26AmbulanceUfeApp, keyof Dt26AmbulanceUfeAppAttributes> & { [K in keyof Dt26AmbulanceUfeApp & keyof Dt26AmbulanceUfeAppAttributes]?: Dt26AmbulanceUfeApp[K] } & { [K in keyof Dt26AmbulanceUfeApp & keyof Dt26AmbulanceUfeAppAttributes as `attr:${K}`]?: Dt26AmbulanceUfeAppAttributes[K] } & { [K in keyof Dt26AmbulanceUfeApp & keyof Dt26AmbulanceUfeAppAttributes as `prop:${K}`]?: Dt26AmbulanceUfeApp[K] };
         "dt26-communication-protocol": Omit<Dt26CommunicationProtocol, keyof Dt26CommunicationProtocolAttributes> & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes]?: Dt26CommunicationProtocol[K] } & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes as `attr:${K}`]?: Dt26CommunicationProtocolAttributes[K] } & { [K in keyof Dt26CommunicationProtocol & keyof Dt26CommunicationProtocolAttributes as `prop:${K}`]?: Dt26CommunicationProtocol[K] };
         "dt26-examination-archive": Omit<Dt26ExaminationArchive, keyof Dt26ExaminationArchiveAttributes> & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes]?: Dt26ExaminationArchive[K] } & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes as `attr:${K}`]?: Dt26ExaminationArchiveAttributes[K] } & { [K in keyof Dt26ExaminationArchive & keyof Dt26ExaminationArchiveAttributes as `prop:${K}`]?: Dt26ExaminationArchive[K] };
         "dt26-patient-card": Omit<Dt26PatientCard, keyof Dt26PatientCardAttributes> & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes]?: Dt26PatientCard[K] } & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes as `attr:${K}`]?: Dt26PatientCardAttributes[K] } & { [K in keyof Dt26PatientCard & keyof Dt26PatientCardAttributes as `prop:${K}`]?: Dt26PatientCard[K] };
@@ -184,6 +207,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "dt-heading": LocalJSX.IntrinsicElements["dt-heading"] & JSXBase.HTMLAttributes<HTMLDtHeadingElement>;
+            "dt26-ambulance-ufe-app": LocalJSX.IntrinsicElements["dt26-ambulance-ufe-app"] & JSXBase.HTMLAttributes<HTMLDt26AmbulanceUfeAppElement>;
             "dt26-communication-protocol": LocalJSX.IntrinsicElements["dt26-communication-protocol"] & JSXBase.HTMLAttributes<HTMLDt26CommunicationProtocolElement>;
             "dt26-examination-archive": LocalJSX.IntrinsicElements["dt26-examination-archive"] & JSXBase.HTMLAttributes<HTMLDt26ExaminationArchiveElement>;
             "dt26-patient-card": LocalJSX.IntrinsicElements["dt26-patient-card"] & JSXBase.HTMLAttributes<HTMLDt26PatientCardElement>;
