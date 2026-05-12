@@ -49,9 +49,17 @@ export class Dt26CommunicationProtocol {
         return;
       }
 
-      const protocolResponse = await api.getConsultationProtocolRaw({ ambulanceId: this.ambulanceId, entryId: this.entryId });
-      if (protocolResponse.raw.status < 299) {
-        this.protocol = await protocolResponse.value();
+      try {
+        const protocolResponse = await api.getConsultationProtocolRaw({ ambulanceId: this.ambulanceId, entryId: this.entryId });
+        if (protocolResponse.raw.status < 299) {
+          this.protocol = await protocolResponse.value();
+        } else {
+          // 404 = protokol ešte neexistuje, inicializujeme prázdny
+          this.protocol = { id: '', entryId: this.entryId, content: '', status: 'open', updatedAt: new Date() };
+        }
+      } catch {
+        // protokol neexistuje (404 throws v niektorých klientoch)
+        this.protocol = { id: '', entryId: this.entryId, content: '', status: 'open', updatedAt: new Date() };
       }
     } catch (err: any) {
       this.errorMessage = `Cannot retrieve data: ${err.message || 'unknown'}`;
