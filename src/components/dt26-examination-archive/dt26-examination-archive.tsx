@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, State, h } from '@stencil/core';
 import { AmbulanceRemoteConsultationApi, ConsultationEntry, Configuration } from '../../api/ambulance-ufe';
 
 @Component({
@@ -7,6 +7,8 @@ import { AmbulanceRemoteConsultationApi, ConsultationEntry, Configuration } from
   shadow: true,
 })
 export class Dt26ExaminationArchive {
+  @Event({ eventName: 'archive-closed' }) archiveClosed: EventEmitter<void>;
+
   @Prop() apiBase: string;
   @Prop() ambulanceId: string;
 
@@ -79,7 +81,12 @@ export class Dt26ExaminationArchive {
   render() {
     return (
       <Host>
-        <h2>Archív vyšetrení</h2>
+        <div class="header">
+          <md-icon-button onclick={() => this.archiveClosed.emit()}>
+            <md-icon>arrow_back</md-icon>
+          </md-icon-button>
+          <h2>Archív vyšetrení</h2>
+        </div>
         {this.errorMessage
           ? <div class="error">{this.errorMessage}</div>
           : <md-list>

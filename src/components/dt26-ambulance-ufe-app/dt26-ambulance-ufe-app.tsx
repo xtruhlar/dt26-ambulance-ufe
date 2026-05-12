@@ -45,7 +45,13 @@ export class Dt26AmbulanceUfeApp {
       return (
         <Host>
           <dt26-patient-card entry-id={entryId} api-base={this.apiBase} ambulance-id={this.ambulanceId}
-            oneditor-closed={() => navigate("./list")}>
+            oneditor-closed={(ev: CustomEvent<string>) => {
+              if (ev.detail === 'protocol') {
+                navigate('./protocol/' + entryId);
+              } else {
+                navigate("./list");
+              }
+            }}>
           </dt26-patient-card>
         </Host>
       );
@@ -53,10 +59,11 @@ export class Dt26AmbulanceUfeApp {
 
     if (this.relativePath.startsWith("protocol/")) {
       const entryId = this.relativePath.split("/")[1];
+      const isNew = entryId === '@new';
       return (
         <Host>
           <dt26-communication-protocol entry-id={entryId} api-base={this.apiBase} ambulance-id={this.ambulanceId}
-            oneditor-closed={() => navigate("./list")}>
+            oneditor-closed={() => navigate(isNew ? "./list" : "./patient/" + entryId)}>
           </dt26-communication-protocol>
         </Host>
       );
@@ -65,7 +72,8 @@ export class Dt26AmbulanceUfeApp {
     if (this.relativePath.startsWith("archive")) {
       return (
         <Host>
-          <dt26-examination-archive api-base={this.apiBase} ambulance-id={this.ambulanceId}>
+          <dt26-examination-archive api-base={this.apiBase} ambulance-id={this.ambulanceId}
+            onarchive-closed={() => navigate("./list")}>
           </dt26-examination-archive>
         </Host>
       );
@@ -74,9 +82,11 @@ export class Dt26AmbulanceUfeApp {
     return (
       <Host>
         <dt26-remote-consultation-list ambulance-id={this.ambulanceId} api-base={this.apiBase}
-          onentry-clicked={(ev: CustomEvent<string>) =>
-            navigate(ev.detail === '@new' ? "./protocol/@new" : "./patient/" + ev.detail)
-          }>
+          onentry-clicked={(ev: CustomEvent<string>) => {
+            if (ev.detail === '@new') navigate("./protocol/@new");
+            else if (ev.detail === '@archive') navigate("./archive");
+            else navigate("./patient/" + ev.detail);
+          }}>
         </dt26-remote-consultation-list>
       </Host>
     );

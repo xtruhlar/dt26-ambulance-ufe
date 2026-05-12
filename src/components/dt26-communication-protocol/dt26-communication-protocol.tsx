@@ -93,16 +93,33 @@ export class Dt26CommunicationProtocol {
         <h2>{isNew ? 'Nová konzultácia' : 'Protokol vyšetrenia'}</h2>
 
         {isNew && <div class="field">
+          <md-outlined-text-field label="ID pacienta" required
+            value={this.entry?.patientId}
+            oninput={(e: any) => {
+              if (this.entry) {
+                this.entry = { ...this.entry, patientId: e.target.value };
+                this.isValid = !!this.entry.patientId && !!this.entry.patientName;
+              }
+            }}>
+          </md-outlined-text-field>
+        </div>}
+
+        {isNew && <div class="field">
           <md-outlined-text-field label="Meno pacienta" required
             value={this.entry?.patientName}
-            oninput={(e: any) => { if (this.entry) this.entry.patientName = e.target.value; }}>
+            oninput={(e: any) => {
+              if (this.entry) {
+                this.entry = { ...this.entry, patientName: e.target.value };
+                this.isValid = !!this.entry.patientId && !!this.entry.patientName;
+              }
+            }}>
           </md-outlined-text-field>
         </div>}
 
         {isNew && <div class="field">
           <md-outlined-text-field label="Diagnóza"
             value={this.entry?.condition}
-            oninput={(e: any) => { if (this.entry) this.entry.condition = e.target.value; }}>
+            oninput={(e: any) => { if (this.entry) this.entry = { ...this.entry, condition: e.target.value }; }}>
           </md-outlined-text-field>
         </div>}
 
@@ -124,7 +141,7 @@ export class Dt26CommunicationProtocol {
         </div>}
 
         <div class="actions">
-          <md-filled-button disabled={!this.entry} onclick={() => this.saveEntry()}>
+          <md-filled-button disabled={isNew ? !this.isValid : !this.entry} onclick={() => this.saveEntry()}>
             <md-icon slot="icon">save</md-icon>
             Uložiť
           </md-filled-button>

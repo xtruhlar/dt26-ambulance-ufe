@@ -21,6 +21,32 @@
 
 .actions {
   margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.field {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: gray;
+  margin-bottom: 0.25rem;
+}
+
+md-outlined-text-field,
+md-outlined-select {
+  width: 100%;
+}
+
+.status-badge {
+  color: gray;
+  font-size: 0.9rem;
+  margin-left: auto;
 }
 
 .error {

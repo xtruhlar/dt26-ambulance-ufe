@@ -39,6 +39,10 @@ export interface Dt26CommunicationProtocolCustomEvent<T> extends CustomEvent<T> 
     detail: T;
     target: HTMLDt26CommunicationProtocolElement;
 }
+export interface Dt26ExaminationArchiveCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDt26ExaminationArchiveElement;
+}
 export interface Dt26PatientCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDt26PatientCardElement;
@@ -77,7 +81,18 @@ declare global {
         prototype: HTMLDt26CommunicationProtocolElement;
         new (): HTMLDt26CommunicationProtocolElement;
     };
+    interface HTMLDt26ExaminationArchiveElementEventMap {
+        "archive-closed": void;
+    }
     interface HTMLDt26ExaminationArchiveElement extends Components.Dt26ExaminationArchive, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDt26ExaminationArchiveElementEventMap>(type: K, listener: (this: HTMLDt26ExaminationArchiveElement, ev: Dt26ExaminationArchiveCustomEvent<HTMLDt26ExaminationArchiveElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDt26ExaminationArchiveElementEventMap>(type: K, listener: (this: HTMLDt26ExaminationArchiveElement, ev: Dt26ExaminationArchiveCustomEvent<HTMLDt26ExaminationArchiveElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLDt26ExaminationArchiveElement: {
         prototype: HTMLDt26ExaminationArchiveElement;
@@ -146,6 +161,7 @@ declare namespace LocalJSX {
     interface Dt26ExaminationArchive {
         "ambulanceId"?: string;
         "apiBase"?: string;
+        "onArchive-closed"?: (event: Dt26ExaminationArchiveCustomEvent<void>) => void;
     }
     interface Dt26PatientCard {
         "ambulanceId"?: string;
